@@ -10,7 +10,7 @@ const App = () => {
 
     useEffect(() => {
         getRecipesFunction();
-    }, [search_query]);
+    }, [search_query, getRecipesFunction]);
 
     const getRecipesFunction = async () => {
       try {
