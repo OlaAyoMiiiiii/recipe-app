@@ -1,0 +1,5 @@
+name: Recipe App Sandbox Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
