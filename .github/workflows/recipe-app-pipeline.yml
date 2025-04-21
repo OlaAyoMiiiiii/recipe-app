@@ -11,4 +11,4 @@ jobs:
       contents: read
     env:
       BASE-IMAGE: oladipupo206/recipe-app
-       RELEASE-TAG: v1.0.0    
+      RELEASE-TAG: v1.0.0    
