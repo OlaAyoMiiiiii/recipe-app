@@ -9,8 +9,13 @@ const App = () => {
     const [search_query, setSearch_Query] = useState('chicken');
 
     useEffect(() => {
+        const getRecipesFunction = () => {
+          // your logic here
+        };
+      
         getRecipesFunction();
-    }, [search_query, getRecipesFunction]);
+      }, []);
+      
 
     const getRecipesFunction = async () => {
       try {
