@@ -12,3 +12,18 @@ jobs:
     env:
       BASE-IMAGE: oladipupo206/recipe-app
       RELEASE-TAG: v1.0.0    
+
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+
+      - name: Node version 20 Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Generate Production Build
+        run: npm run build
