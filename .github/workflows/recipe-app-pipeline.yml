@@ -52,3 +52,18 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+
+      - name: Deploy to AWS - EC2
+        id: deploy
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOSTNAME: ${{ vars.SSH_HOST }}
+          USER_NAME: ${{ vars.USER_NAME }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
+          ssh -o "StrictHostKeyChecking no" -i private_key.pem ${USER_NAME}@${HOSTNAME} '
+              # Now we have got the access of EC2 and to will start the deploy .
+              export LATEST=${{env.RELEASE_VERSION}}
+              echo "Latest version: $LATEST"
+              docker-compose -f /app/gaming-app.yml up -d
