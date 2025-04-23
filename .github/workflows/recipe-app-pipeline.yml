@@ -67,3 +67,4 @@ jobs:
               export LATEST=${{env.RELEASE_VERSION}}
               echo "Latest version: $LATEST"
               docker-compose -f /app/gaming-app.yml up -d
+              '
