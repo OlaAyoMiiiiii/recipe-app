@@ -9,31 +9,39 @@ const App = () => {
     const [search_query, setSearch_Query] = useState('chicken');
 
     useEffect(() => {
-        const getRecipesFunction = () => {
-          // your logic here
-        };
-      
-        getRecipesFunction();
-      }, []);
-      
-
-    const getRecipesFunction = async () => {
-      try {
-        const response = await fetch(
-          `https://api.edamam.com/api/recipes/v2?q=${search_query}&app_id=${APP_ID}&app_key=${APP_KEY}&type=public`,{
-            headers: {
-              "Edamam-Account-User": "oladipupo206",
-            },
-          }
-                  );
-                  const data = await response.json();
-      
-                  setfood_recipes(data.hits);
-      }catch(e){
-        setfood_recipes([]);
-      }
+        const getRecipesFunction = async () => {
+            const response =await  fetch(
+                `https://api.edamam.com/api/recipes/v2?q=${search_query}&app_id=${APP_ID}&app_key=${APP_KEY}&type=public`,{
+                  headers: {
+                    "Edamam-Account-User": "oladipupo206",
+                  },
+                }
+                        );
+                        const data =await  response.json();
+            
+                        setfood_recipes(data.hits);
+        }
+        getRecipesFunction()
         
-    };
+    }, [search_query]);
+
+    // const getRecipesFunction = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       `https://api.edamam.com/api/recipes/v2?q=${search_query}&app_id=${APP_ID}&app_key=${APP_KEY}&type=public`,{
+    //         headers: {
+    //           "Edamam-Account-User": "oladipupo206",
+    //         },
+    //       }
+    //               );
+    //               const data = await response.json();
+      
+    //               setfood_recipes(data.hits);
+    //   }catch(e){
+    //     setfood_recipes([]);
+    //   }
+        
+    // };
 
     const updateSearchFunction = (e) => {
         setSearch_recipe(e.target.value);
